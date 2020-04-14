@@ -42,8 +42,8 @@ def logout(request):
 
 
 # 接口管理
-@xframe_options_sameorigin
 @login_required
+@xframe_options_sameorigin
 def apitest_manage(request):
     apitest_list = Apitest.objects.all()  # 读取所有流程接口的数据
     username = request.session.get('user', '')  # 读取浏览器登录session中保存的用户名
@@ -52,6 +52,7 @@ def apitest_manage(request):
 
 # 接口步骤管理
 @login_required
+@xframe_options_sameorigin
 def apistep_manage(request):
     username = request.session.get('user', '')
     apistep_list = Apistep.objects.all()
@@ -60,6 +61,7 @@ def apistep_manage(request):
 
 # 单一接口管理
 @login_required
+@xframe_options_sameorigin
 def apis_manage(request):
     username = request.session.get('user', '')
     apis_list = Apis.objects.all()
@@ -68,6 +70,7 @@ def apis_manage(request):
 
 # 测试报告
 @login_required
+@xframe_options_sameorigin
 def test_report(request):
     username = request.session.get('user', '')
     apis_list = Apis.objects.all()
