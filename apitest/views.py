@@ -99,3 +99,12 @@ def test_report(request):
 @xframe_options_sameorigin
 def left(request):
     return render(request, 'left.html')
+
+
+@login_required
+@xframe_options_sameorigin
+def apisearch(request):
+    username = request.session.get('user', '')
+    search_apitestname = request.GET.get('apitestname', '')
+    apitest_list = Apitest.objects.filter(apitestname__contains=search_apitestname)
+    return render(request, 'apitest_manage.html', {'user': username, 'apitests': apitest_list})
