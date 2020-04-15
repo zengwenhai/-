@@ -36,6 +36,7 @@ def home(request):
     return render(request, 'home.html')
 
 
+@xframe_options_sameorigin
 def logout(request):
     auth.logout(request)
     return render(request, 'login.html')
@@ -108,3 +109,12 @@ def apisearch(request):
     search_apitestname = request.GET.get('apitestname', '')
     apitest_list = Apitest.objects.filter(apitestname__contains=search_apitestname)
     return render(request, 'apitest_manage.html', {'user': username, 'apitests': apitest_list})
+
+
+@login_required
+@xframe_options_sameorigin
+def apissearch(request):
+    username = request.session.get('user', '')
+    search_apiname = request.GET.get('apiname', '')
+    apis_list = Apis.objects.filter(apiname__contains=search_apiname)
+    return render(request, 'apis_manage.html', {'user': username, 'apiss': apis_list})

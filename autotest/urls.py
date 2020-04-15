@@ -41,5 +41,13 @@ urlpatterns = [
     path('webcasestep_manage/', webviews.webcasestep_manage),
     path('test_report/', views.test_report),
     path('left/', views.left),
-    path('apisearch/', views.apisearch)
+    path('apisearch/', views.apisearch),
+    path('setsearch/', setviews.setsearch),
+    path('productsearch/', proviews.productsearch),
+    path('apissearch/', views.apisearch),
+    path('bugsearch/', bugviews.bugsearch),
+    path('appsearch/', appviews.appsearch),
+    path('appstepsearch/', appviews.appstepsearch),
+    path('websearch/', webviews.websearch),
+    path('webstepsearch/', webviews.webstepsearch),
 ]
